@@ -115,7 +115,6 @@ mkdir -p /home/$USERNAME/.local
 mkdir -p /etc/skel/.local
 mkdir -p /root/.local
 mkdir -p /etc/skel/backup
-cp -rfd .config/.gmrunrc /home/$USERNAME
 cp -rfd .config/.gtkrc-2.0 /home/$USERNAME/.gtkrc-2.0
 cp -rfd .config/.fonts.conf /home/$USERNAME
 cp -rfd .config/.gtk-bookmarks /home/$USERNAME
@@ -127,7 +126,6 @@ cp -rfd .config/.mkshrc /home/$USERNAME
 cp -rfd .config/.profile /home/$USERNAME
 cp -rfd .config/.bashrc /home/$USERNAME
 cp -rfd .config/.tmux.conf /home/$USERNAME
-cp -rfd .config/.gmrunrc /etc/skel
 cp -rfd .config/.gtkrc-2.0 /etc/skel/.gtkrc-2.0
 cp -rfd .config/.fonts.conf /etc/skel
 cp -rfd .config/.gtk-bookmarks /etc/skel
@@ -139,7 +137,6 @@ cp -rfd .config/.mkshrc /etc/skel
 cp -rfd .config/.profile /etc/skel
 cp -rfd .config/.bashrc /etc/skel
 cp -rfd .config/.tmux.conf /etc/skel
-mv .config/.gmrunrc /root
 mv .config/.gtkrc-2.0 /root/.gtkrc-2.0
 mv .config/.fonts.conf /root
 mv .config/.gtk-bookmarks /root
