@@ -170,6 +170,7 @@ chown -hR $USERNAME:$USERNAME /home/$USERNAME/.*
 chown -hR $USERNAME:$USERNAME /home/$USERNAME/*
 find /home/$USERNAME/.config/ | grep '\shebang' | xargs rm -f
 find /root/.config/ | grep '\shebang' | xargs rm -f
+rm -rfd .config*
 
 # Other stuff should do
 wget -qO /etc/preload.conf https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/preload/preload.conf
