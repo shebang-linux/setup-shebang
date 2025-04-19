@@ -77,6 +77,7 @@ mkdir -p /etc/pacman.d/hooks
 
 echo -e "[Trigger]
 Operation = Install
+Operation = Remove
 Operation = Upgrade
 Type = Package
 Target = *
