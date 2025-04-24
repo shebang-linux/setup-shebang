@@ -177,6 +177,9 @@ rm -rfd .config*
 wget -qO /etc/preload.conf https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/preload/preload.conf
 wget -qO /sbin/preload https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/preload/preload
 chmod +x /sbin/preload
+wget -qO /etc/prelockd.conf https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/prelockd/prelockd.conf
+wget -qO /sbin/prelockd https://raw.githubusercontent.com/hakavlad/prelockd/refs/heads/master/prelockd
+chmod +x /sbin/prelockd
 wget -qO /etc/hosts https://github.com/StevenBlack/hosts/raw/refs/heads/master/alternates/fakenews-gambling-porn-social/hosts && sed -i -e 's/#.*0.0.0.0/0.0.0.0/g' /etc/hosts
 
 echo -e "permit persist :$USERNAME
