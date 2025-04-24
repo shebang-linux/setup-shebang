@@ -186,6 +186,7 @@ echo -e "permit persist :$USERNAME
 permit nopass $USERNAME as root cmd ip
 permit nopass $USERNAME as root cmd macchanger
 permit nopass $USERNAME as root cmd /root/.local/bin/tor-router
+permit nopass $USERNAME as root cmd /sbin/prelockd
 permit nopass $USERNAME as root cmd pacman
 permit nopass $USERNAME as root cmd flatpak
 permit nopass $USERNAME as root cmd fwupdtool
