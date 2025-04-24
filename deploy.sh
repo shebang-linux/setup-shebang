@@ -310,6 +310,26 @@ blacklist brcm80211
 blacklist brcmfmac
 blacklist brcmsmac" >/etc/modprobe.d/nomisc.conf
 
+echo "options vfio_pci disable_vga=1
+options cec debug=0
+options kvm mmu_audit=0
+options kvm ignore_msrs=1
+options kvm report_ignored_msrs=0
+options kvm kvmclock_periodic_sync=1
+options nfs enable_ino64=1
+options pstore backend=null
+options libata allow_tpm=0
+options libata ignore_hpa=0
+options libahci ignore_sss=1
+options libahci skip_host_reset=1
+options snd_hda_intel power_save=1
+options snd_ac97_codec power_save=1
+options uhci-hcd debug=0
+options usbhid mousepoll=5
+options usb-storage quirks=p
+options usbcore usbfs_snoop=0
+options usbcore autosuspend=10" >/etc/modprobe.d/misc.conf
+
 echo -e "options processor ignore_ppc=1" >/etc/modprobe.d/ignore_ppc.conf
 
 echo -e "options drm_kms_helper poll=0" >/etc/modprobe.d/disable-gpu-polling.conf
