@@ -494,6 +494,8 @@ echo -e 'ACTION=="add|change", KERNEL=="sd*[!0-9]|sr*|mmcblk[0-9]*|nvme[0-9]*", 
 echo -e 'ACTION=="add|change", KERNEL=="sd*[!0-9]|sr*|mmcblk[0-9]*|nvme[0-9]*", ATTR{queue/add_random}=="0"' >/etc/udev/rules.d/10-add-random.rules
 echo -e 'ACTION=="add|change", KERNEL=="sd*[!0-9]|sr*|mmcblk[0-9]*|nvme[0-9]*", ATTR{queue/iostats}="0"' >/etc/udev/rules.d/20-iostats.rules
 echo -e 'ACTION=="add|change", KERNEL=="sd*[!0-9]|sr*|mmcblk[0-9]*|nvme[0-9]*", ATTR{bdi/read_ahead_kb}="64", ATTR{queue/read_ahead_kb}="64", ATTR{queue/nr_requests}="32"' >/etc/udev/rules.d/70-readahead.rules
+echo -e 'ACTION=="add|change", SUBSYSTEM=="drm", KERNEL=="card*", ATTR{device/power_dpm_state}="battery"' >/etc/udev/rules.d/30-dpm.rules
+echo -e 'ACTION=="add|change", SUBSYSTEM=="scsi_host", KERNEL=="host*", ATTR{link_power_management_policy}="min_power"' >/etc/udev/rules.d/50-sata.rules
 
 sed -i -e 's/^#udev_log=info/udev_log=err/' /etc/udev/udev.conf
 sed -i -e 's/^#exec_delay=/exec_delay=0/' /etc/udev/udev.conf
