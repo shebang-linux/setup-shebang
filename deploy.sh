@@ -532,7 +532,7 @@ echo -e "options nf_conntrack nf_conntrack_helper=0" >/etc/modprobe.d/no-conntra
 
 echo -e "options rfkill default_state=0 master_switch_mode=0" >/etc/modprobe.d/wlanextra.conf
 
-sed -i -e 's|ext4.*|ext4 rw,lazytime,commit=3600,delalloc,nobarrier,nofail,discard 0 1|g' /etc/fstab
+sed -i -e 's|ext4.*|ext4 rw,lazytime,commit=3600,delalloc,nobarrier,nofail,discard 0 0|g' /etc/fstab
 
 echo -e "* soft nofile 524288
 * hard nofile 524288
