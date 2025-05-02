@@ -339,6 +339,9 @@ echo -e "options drm_kms_helper poll=0" >/etc/modprobe.d/disable-gpu-polling.con
 
 echo -e "options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0 NVreg_DynamicPowerManagement=0x02" >/etc/modprobe.d/nvidia.conf
 
+echo -e "options amdgpu si_support=1 cik_support=1
+options radeon si_support=0 cik_support=0" >/etc/modprobe.d/amd.conf
+
 mkdir -p /etc/modules-load.d
 echo -e "ntsync" >/etc/modules-load.d/ntsync.conf
 echo -e "bfq" >/etc/modules-load.d/bfq.conf
