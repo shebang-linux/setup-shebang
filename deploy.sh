@@ -535,6 +535,9 @@ fi
 
 echo -e "options nf_conntrack nf_conntrack_helper=0" >/etc/modprobe.d/no-conntrack-helper.conf
 
+echo -e "options iwlwifi power_save=1
+options iwlmvm power_scheme=3" >/etc/modprobe.d/wlan.conf
+
 echo -e "options rfkill default_state=0 master_switch_mode=0" >/etc/modprobe.d/wlanextra.conf
 
 sed -i -e 's|ext4.*|ext4 rw,lazytime,commit=3600,delalloc,nobarrier,nofail,discard 0 0|g' /etc/fstab
