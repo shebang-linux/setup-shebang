@@ -123,7 +123,7 @@ parted -s "$DISK" set 1 boot on
 
 # Encrypt drive
 if [ "$ENCRYPTED" = "y" ]; then
-  echo -ne "$CRYPTPASS" | cryptsetup -q luksFormat --pbkdf=pbkdf2 --pbkdf-force-iterations=1000 --hash=sha512 "$ROOT_PART"
+  echo -ne "$CRYPTPASS" | cryptsetup -q luksFormat --pbkdf=pbkdf2 "$ROOT_PART"
   echo -ne "$CRYPTPASS" | cryptsetup open "$ROOT_PART" root
 
   ROOT_PART="/dev/mapper/root"
