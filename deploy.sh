@@ -149,7 +149,7 @@ mv .config/.mkshrc /root
 mv .config/.profile /root
 mv .config/.bashrc /root
 mv .config/.tmux.conf /root
-mv .config/wallpaper*.png /usr/share/backgrounds/wallpaper*.png
+mv .config/wallpaper*.png /usr/share/backgrounds
 cp -rfd .config/.newsboat /home/$USERNAME/.newsboat
 cp -rfd .config/.newsboat /etc/skel/.newsboat
 cp -rfd .config/.newsboat /root/.newsboat
