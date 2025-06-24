@@ -184,6 +184,7 @@ wget -qO /etc/hosts https://github.com/StevenBlack/hosts/raw/refs/heads/master/a
 
 echo -e "permit persist :$USERNAME
 permit nopass $USERNAME as root cmd ip
+permit nopass $USERNAME as root cmd iw
 permit nopass $USERNAME as root cmd macchanger
 permit nopass $USERNAME as root cmd /root/.local/bin/tor-router
 permit nopass $USERNAME as root cmd pacman
