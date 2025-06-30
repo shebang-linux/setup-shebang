@@ -71,7 +71,7 @@ Include = /etc/pacman.d/mirrorlist-arch
 " >>/etc/pacman.conf
 
 pacman -Sy && pacman-key --init && pacman-key --populate archlinux
-pacman -Sy --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas egl-gbm egl-x11 egl-wayland fwupd gtk-engines gtk-engine-murrine haveged-$INIT jitterentropy libva-mesa-driver macchanger mesa mesa-vdpau openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim vulkan-mesa-layers wayland wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xorg xorg-xinit xterm
+pacman -Sy --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas egl-gbm egl-x11 egl-wayland fwupd gtk-engines gtk-engine-murrine haveged-$INIT jitterentropy libva-mesa-driver macchanger mesa mesa-vdpau msr-tools openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim vulkan-mesa-layers wayland wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xorg xorg-xinit xterm
 
 mkdir -p /etc/pacman.d/hooks
 
@@ -484,7 +484,11 @@ sed -i -e 's|ext4.*|ext4 rw,lazytime,commit=3600,delalloc,nobarrier,nofail,disca
 echo -e "* soft nofile 524288
 * hard nofile 524288
 root soft nofile 524288
-root hard nofile 524288" >/etc/security/limits.conf
+root hard nofile 524288
+* soft memlock unlimited
+* hard memlock unlimited
+root soft memlock unlimited
+root hard memlock unlimited" >/etc/security/limits.conf
 
 echo -e "order bind,hosts
 multi on" >/etc/host.conf
