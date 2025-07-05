@@ -26,11 +26,8 @@ yes "$ROOT_PASSWORD" | passwd
 
 # Pacman
 echo -e '# Default mirrors
-Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch
 Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
-Server = https://ftp.crifo.org/artix/repos/$repo/os/$arch
-Server = https://ftp.sh.cvut.cz/artix-linux/$repo/os/$arch
-#Server = http://ftp.ntua.gr/pub/linux/artix-linux/$repo/os/$arch' >/etc/pacman.d/mirrorlist
+Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
 sed -i -e '/#DisableSandbox/a DisableDownloadTimeout' /etc/pacman.conf
 sed -i -e s"/\#VerbosePkgLists/VerbosePkgLists/"g /etc/pacman.conf
 sed -i -e s"/\#ParallelDownloads.*/ParallelDownloads = 3/"g /etc/pacman.conf
