@@ -108,6 +108,7 @@ done
 # Partition disk
 clear
 swapoff -a
+shred -z -f /mnt/*
 umount -AR /mnt*
 cryptsetup close /dev/mapper/root
 
