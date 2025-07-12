@@ -25,6 +25,9 @@ yes "$ROOT_PASSWORD" | passwd $USERNAME
 yes "$ROOT_PASSWORD" | passwd
 
 # Pacman
+wget -qO /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst https://archive.artixlinux.org/packages/f/fontconfig/fontconfig-2%3A2.16.2-1-x86_64.pkg.tar.zst
+pacman -U --noconfirm /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst
+
 echo -e '# Default mirrors
 Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
@@ -34,7 +37,7 @@ sed -i -e s"/\#ParallelDownloads.*/ParallelDownloads = 3/"g /etc/pacman.conf
 sed -i -e s"/\#CheckSpace/CheckSpace/"g /etc/pacman.conf
 sed -i -e s"/\#CacheDir.*/CacheDir = \/tmp\//"g /etc/pacman.conf
 sed -i -e s"/\#LogFile.*/LogFile = \/dev\/null/"g /etc/pacman.conf
-sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo/' /etc/pacman.conf
+sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo fontconfig/' /etc/pacman.conf
 sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/* usr\/share\/help\/* usr\/share\/info\/* usr\/share\/man\/*/"g /etc/pacman.conf
 sed -i -e "s/xz.*/xz -c -z -q - --threads=$(nproc))/;s/^#COMPRESSXZ/COMPRESSXZ/;s/zstd.*/zstd -c -z -q - --threads=$(nproc))/;s/^#COMPRESSZST/COMPRESSZST/;s/lz4.*/lz4 -q --best)/;s/^#COMPRESSLZ4/COMPRESSLZ4/" /etc/makepkg.conf
 sed -i -e "s/PKGEXT.*/PKGEXT='.pkg.tar.lz4'/g" /etc/makepkg.conf
