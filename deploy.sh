@@ -25,7 +25,7 @@ yes "$ROOT_PASSWORD" | passwd $USERNAME
 yes "$ROOT_PASSWORD" | passwd
 
 # Pacman
-wget -qO /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst https://archive.artixlinux.org/packages/f/fontconfig/fontconfig-2%3A2.16.2-1-x86_64.pkg.tar.zst
+curl -so /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst https://archive.artixlinux.org/packages/f/fontconfig/fontconfig-2%3A2.16.2-1-x86_64.pkg.tar.zst
 pacman -U --noconfirm /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst
 
 echo -e '# Default mirrors
