@@ -36,6 +36,9 @@ confirm_password() {
 }
 
 # Pacman
+echo -e '# Default mirrors
+Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
+Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
 sed -i -e '/ILoveCandy/a DisableDownloadTimeout' /etc/pacman.conf
 
 # Dependencies
