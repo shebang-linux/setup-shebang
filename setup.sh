@@ -132,7 +132,7 @@ fi
 # Format and mount partitions
 mkfs.fat -F 32 "$PART1"
 fatlabel "$PART1" ESP
-mkfs.ext4 -L root -F -O ^quota,^has_journal,^metadata_csum,uninit_bg,fast_commit -b2048 -m1 "$ROOT_PART"
+mkfs.ext4 -L root -F -O ^quota,^has_journal,^metadata_csum,^ext_attr,^extra_isize,uninit_bg,fast_commit -b2048 -m1 "$ROOT_PART"
 mount "$ROOT_PART" /mnt
 shred -z -f /mnt/*
 mkdir -p /mnt/boot/efi
