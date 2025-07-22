@@ -218,11 +218,19 @@ Section "Device"
     Identifier "Device0"
     Option "TearFree" "true"
     Option "DynamicPMMSupport" "true"
+    Option "PowerSave" "true"
+EndSection
+
+Section "Screen"
+    Option "UseFBDev" "true"
 EndSection
 
 Section "Extensions"
     Option "Composite" "off"
     Option "XVideo" "off"
+    Option "RENDER" "off"
+    Option "Damage" "off"
+    Option "DAMAGE" "off"
 EndSection' >/etc/X11/xorg.conf.d/10-xorg.conf
 
 echo -e "CPU_LIMIT=0
