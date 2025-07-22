@@ -209,14 +209,21 @@ sed -i -e 's/#HandleLidSwitchExternalPower=.*/HandleLidSwitchExternalPower=suspe
 sed -i -e 's/#HandleLidSwitchDocked=.*/HandleLidSwitchDocked=ignore/' /etc/elogind/logind.conf
 sed -i -e 's/#HandlePowerKeyLongPress=.*/HandlePowerKeyLongPress=reboot/' /etc/elogind/logind.conf
 
-echo -e 'Section "Device"
+echo -e 'Section "ServerFlags"
+    Option "GlxVisuals" "minimal"
+    Option "Log" "flush"
+EndSection
+
+Section "Device"
     Identifier "Device0"
     Option "TearFree" "true"
+    Option "DynamicPMMSupport" "true"
 EndSection
 
 Section "Extensions"
-    Option "Composite" "Disable"
-EndSection' >/etc/xorg.conf
+    Option "Composite" "off"
+    Option "XVideo" "off"
+EndSection' >/etc/X11/xorg.conf.d/10-xorg.conf
 
 echo -e "CPU_LIMIT=0
 GPU_USE_SYNC_OBJECTS=1
