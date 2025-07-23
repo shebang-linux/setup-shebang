@@ -221,12 +221,7 @@ Section "Device"
     Option "PowerSave" "true"
 EndSection
 
-Section "Screen"
-    Option "UseFBDev" "true"
-EndSection
-
 Section "Extensions"
-    Option "Composite" "off"
     Option "XVideo" "off"
     Option "RENDER" "off"
     Option "Damage" "off"
