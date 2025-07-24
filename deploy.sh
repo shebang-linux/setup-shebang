@@ -466,7 +466,7 @@ net.core.somaxconn=65535
 net.core.optmem_max=65535
 net.core.rmem_max=6291456
 net.core.wmem_max=6291456" >/lib/sysctl.d/99-swappiness.conf
-sysctl -w vm.compact_memory=1 && sysctl -w vm.drop_caches=3 && sysctl -w vm.drop_caches=2
+sysctl -w vm.compact_memory=1 && sysctl -w vm.drop_caches=3
 
 mkdir -p /etc/udev/rules.d
 echo -e 'ACTION=="add|change", ATTR{queue/scheduler}=="*bfq*", KERNEL=="sd*[!0-9]|sr*|mmcblk[0-9]*|nvme[0-9]*", ATTR{queue/scheduler}="bfq"' >/etc/udev/rules.d/60-scheduler.rules
