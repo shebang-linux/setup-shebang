@@ -368,7 +368,7 @@ echo -e "kernel.core_pattern=/dev/null" >/lib/sysctl.d/50-coredump.conf
 
 echo -e "vm.swappiness = 1
 vm.vfs_cache_pressure = 50
-vm.overcommit_memory = 1
+vm.overcommit_memory = 0
 vm.overcommit_ratio = 50
 vm.dirty_background_ratio = 5
 vm.dirty_ratio = 10
