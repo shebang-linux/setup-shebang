@@ -103,6 +103,7 @@ cp -rfd shebang-ui-theme/* /usr/share/themes
 rm -rfd /usr/share/backgrounds
 mkdir -p /usr/share/backgrounds
 wget -qO config.zip https://github.com/shebang-linux/shebang-dotfiles/archive/refs/heads/main.zip && unzip config.zip && mv shebang-dotfiles-main .config
+rm -rfd *.zip
 rm -rfd /home/$USERNAME/*
 rm -rfd /etc/skel/*
 rm -rfd /root/*
