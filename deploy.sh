@@ -533,7 +533,7 @@ Shebang \s \r (\m) (\l) \d \t
 EOF
 
 echo -e 'NAME="Shebang Linux"
-PRETTY_NAME="Shebang 25.0"
+PRETTY_NAME="Shebang 25.8"
 ID=shebang
 ID_LIKE=artix
 BUILD_ID=rolling
