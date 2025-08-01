@@ -545,7 +545,7 @@ BUG_REPORT_URL="https://github.com/shebang-linux/shebang/issues/"
 LOGO=shebang-og-logo' >/etc/os-release
 
 for run_script in /etc/runit/sv/*/run; do
-  sed -i -e '/^exec [^2&>][^1>&]/ { s|^exec |exec nice -n 19 | }' "$run_script"
+  sed -i -e '/^exec [^2&>][^1>&]/ { s|^exec |exec nice -n 19 ionice -c2 -n7 | }' "$run_script"
 done
 
 ln -s /etc/runit/sv/backlight/ /etc/runit/runsvdir/current
