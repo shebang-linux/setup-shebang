@@ -358,6 +358,8 @@ echo -e "options nvidia NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemo
 echo -e "options amdgpu si_support=1 cik_support=1
 options radeon si_support=0 cik_support=0" >/etc/modprobe.d/amd.conf
 
+echo -e "options i915 fastboot=1 enable_guc=2 enable_dc=4 enable_hangcheck=0 error_capture=0" >/etc/modprobe.d/intel.conf
+
 mkdir -p /etc/modules-load.d
 echo -e "ntsync" >/etc/modules-load.d/ntsync.conf
 echo -e "bfq" >/etc/modules-load.d/bfq.conf
