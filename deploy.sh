@@ -567,6 +567,14 @@ sed -i -e 's/#COMPRESSION="lz4"/COMPRESSION="lz4"/g' /etc/mkinitcpio.conf
 sed -i -e 's/#COMPRESSION_OPTIONS=.*/COMPRESSION_OPTIONS=("--best")/g' /etc/mkinitcpio.conf
 sed -i -e 's/#MODULES_DECOMPRESS=.*/MODULES_DECOMPRESS="yes"/g' /etc/mkinitcpio.conf
 
+tee /etc/mkinitcpio.d/linux-zen.preset <<"EOF"
+ALL_kver="/boot/vmlinuz-linux-zen"
+PRESETS=('default')
+default_image="/boot/initramfs-linux-zen.img"
+EOF
+
+rm /boot/initramfs-linux-zen-fallback.img
+
 mkinitcpio -P
 
 # Install boot loader
