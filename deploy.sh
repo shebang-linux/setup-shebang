@@ -5,8 +5,7 @@ ln -sf /usr/share/zoneinfo/"$REGION_CITY" /etc/localtime
 hwclock --systohc
 
 # Localization
-echo -e "LANG=en_GB.UTF8
-LANGUAGE=en_GB.UTF8
+echo -e "LC_ALL=C
 LC_COLLATE=C
 XKB_DEFAULT_LAYOUT=$KEYMAP" >/etc/environment
 echo -e "FONT_MAP=8859-2
