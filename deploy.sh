@@ -40,11 +40,17 @@ sed -i -e s"/\#CacheDir.*/CacheDir = \/tmp\//"g /etc/pacman.conf
 sed -i -e s"/\#LogFile.*/LogFile = \/dev\/null/"g /etc/pacman.conf
 sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo fontconfig/' /etc/pacman.conf
 sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/* usr\/share\/help\/* usr\/share\/info\/* usr\/share\/man\/*/"g /etc/pacman.conf
-sed -i -e "s/-march=x86-64 -mtune=generic -O2/-march=native -mtune=native -O3/g" /etc/makepkg.conf
+sed -i -e s'/^CHOST.*/CHOST="x86_64-linux-musl"/'g /etc/makepkg.conf
+sed -i -e '/^CFLAGS=/,/"/c\CFLAGS="-march=native -mtune=native -Os -flto -Wl,-flto -pipe \\\n\t-fomit-frame-pointer -momit-leaf-frame-pointer \\\n\t-fno-exceptions -fno-rtti \\\n\t-fno-plt -fno-semantic-interposition \\\n\t-ffunction-sections -fdata-sections"' /etc/makepkg.conf
+sed -i -e s'/^CXXFLAGS=.*/CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_PARALLEL -Wp,-D_GLIBCXX_ASSERTIONS"/'g /etc/makepkg.conf
+sed -i -e s'/^LDFLAGS=.*/LDFLAGS="-Os -Wl,-flto -Wl,--sort-common -Wl,--as-needed -Wl,--gc-sections -s"/'g /etc/makepkg.conf
+sed -i -e s'/^DEBUG_CFLAGS=.*/DEBUG_CFLAGS="-g0 -s"/'g /etc/makepkg.conf
+sed -i -e "s/-j.*/-j$(expr $(nproc) - 1) -l$(nproc)\"/;s/^#MAKEFLAGS/MAKEFLAGS/;s/^#RUSTFLAGS/RUSTFLAGS/" /etc/makepkg.conf
+sed -i -e "s|BUILDENV.*|BUILDENV=(!distcc !color !ccache !check !sign)|g" /etc/makepkg.conf
+sed -i -e "s|OPTIONS=(.*|OPTIONS=(strip !docs !libtool !staticlibs emptydirs zipman purge !debug lto)|g" /etc/makepkg.conf
 sed -i -e "s/xz.*/xz -c -z -q - --threads=$(nproc))/;s/^#COMPRESSXZ/COMPRESSXZ/;s/zstd.*/zstd -c -z -q - --threads=$(nproc))/;s/^#COMPRESSZST/COMPRESSZST/;s/lz4.*/lz4 -q --best)/;s/^#COMPRESSLZ4/COMPRESSLZ4/" /etc/makepkg.conf
 sed -i -e "s/PKGEXT.*/PKGEXT='.pkg.tar.lz4'/g" /etc/makepkg.conf
-sed -i -e "s|OPTIONS=(.*|OPTIONS=(strip !docs !libtool !staticlibs emptydirs zipman purge !debug lto)|g" /etc/makepkg.conf
-sed -i -e "s/-j.*/-j$(expr $(nproc) - 1) -l$(nproc)\"/;s/^#MAKEFLAGS/MAKEFLAGS/;s/^#RUSTFLAGS/RUSTFLAGS/" /etc/makepkg.conf
+sed -i -e "s/.*PACMAN_AUTH.*/PACMAN_AUTH=(doas)/g" /etc/makepkg.conf
 
 cp -rfd /etc/pacman.conf /etc/pacman.conf.bak
 
