@@ -43,7 +43,7 @@ sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/*
 sed -i -e s'/^CHOST.*/CHOST="x86_64-linux-musl"/'g /etc/makepkg.conf
 sed -i -e '/^CFLAGS=/,/"/c\CFLAGS="-march=native -mtune=native -Os -flto -Wl,-flto -pipe \\\n\t-fomit-frame-pointer -momit-leaf-frame-pointer \\\n\t-fno-exceptions -fno-rtti \\\n\t-fno-plt -fno-semantic-interposition \\\n\t-ffunction-sections -fdata-sections"' /etc/makepkg.conf
 sed -i -e s'/^CXXFLAGS=.*/CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_PARALLEL"/'g /etc/makepkg.conf
-sed -i -e s'/^LDFLAGS=.*/LDFLAGS="-Os -Wl,-flto -Wl,--sort-common -Wl,--as-needed -Wl,--gc-sections -s"/'g /etc/makepkg.conf
+sed -i -e s'/^LDFLAGS=.*/LDFLAGS="-Os -Wl,-flto -Wl,--sort-common -Wl,--as-needed -Wl,--gc-sections -Wl,-z,now -s"/'g /etc/makepkg.conf
 sed -i -e s'/^DEBUG_CFLAGS=.*/DEBUG_CFLAGS="-g0 -s"/'g /etc/makepkg.conf
 sed -i -e "s/-j.*/-j$(expr $(nproc) - 1) -l$(nproc)\"/;s/^#MAKEFLAGS/MAKEFLAGS/;s/^#RUSTFLAGS/RUSTFLAGS/" /etc/makepkg.conf
 sed -i -e "s|BUILDENV.*|BUILDENV=(!distcc !color !ccache !check !sign)|g" /etc/makepkg.conf
