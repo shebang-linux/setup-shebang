@@ -47,6 +47,7 @@ sed -i -e s'/^LDFLAGS=.*/LDFLAGS="-Os -Wl,-flto -Wl,--sort-common -Wl,--as-neede
 sed -i -e s'/^DEBUG_CFLAGS=.*/DEBUG_CFLAGS="-g0 -s"/'g /etc/makepkg.conf
 sed -i -e "s/-j.*/-j$(expr $(nproc) - 1) -l$(nproc)\"/;s/^#MAKEFLAGS/MAKEFLAGS/;s/^#RUSTFLAGS/RUSTFLAGS/" /etc/makepkg.conf
 sed -i -e "s|BUILDENV.*|BUILDENV=(!distcc !color !ccache !check !sign)|g" /etc/makepkg.conf
+sed -i -e "s/.*BUILDDIR.*/BUILDDIR=\/var\/lib\/pacman\/sources/g" /etc/makepkg.conf
 sed -i -e "s|OPTIONS=(.*|OPTIONS=(strip !docs !libtool !staticlibs emptydirs zipman purge !debug lto)|g" /etc/makepkg.conf
 sed -i -e "s/xz.*/xz -c -z -q - --threads=$(nproc))/;s/^#COMPRESSXZ/COMPRESSXZ/;s/zstd.*/zstd -c -z -q - --threads=$(nproc))/;s/^#COMPRESSZST/COMPRESSZST/;s/lz4.*/lz4 -q --best)/;s/^#COMPRESSLZ4/COMPRESSLZ4/" /etc/makepkg.conf
 sed -i -e "s/PKGEXT.*/PKGEXT='.pkg.tar.lz4'/g" /etc/makepkg.conf
