@@ -10,6 +10,8 @@ LC_COLLATE=C
 LANG=en_GB.UTF8
 LANGUAGE=en_GB.UTF8
 XKB_DEFAULT_LAYOUT=$KEYMAP" >/etc/environment
+echo "en_GB.UTF-8 UTF-8" >/etc/locale.gen
+locale-gen
 echo -e "FONT_MAP=8859-2
 KEYMAP=$KEYMAP" >/etc/vconsole.conf
 
