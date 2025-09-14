@@ -41,6 +41,7 @@ Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
 sed -i -e '/^HoldPkg/a XferCommand = /sbin/curl -fSL --proto '\''=https'\'' --tlsv1.3 --progress-bar -o %o %u' /etc/pacman.conf
 sed -i -e '/ILoveCandy/a DisableDownloadTimeout' /etc/pacman.conf
+sed -i -e s"/\#CleanMethod.*/CleanMethod = KeepCurrent/"g /etc/pacman.conf
 
 # Dependencies
 command -v parted >/dev/null 2>&1 || pacman -Sy --needed --noconfirm --disable-download-timeout parted
