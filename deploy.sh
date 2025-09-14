@@ -34,12 +34,14 @@ pacman -U --noconfirm /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst
 echo -e '# Default mirrors
 Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
+sed -i -e '/^HoldPkg/a XferCommand = /sbin/curl -fSL --proto '\''=https'\'' --tlsv1.3 --progress-bar -o %o %u' /etc/pacman.conf
 sed -i -e '/#DisableSandbox/a DisableDownloadTimeout' /etc/pacman.conf
 sed -i -e s"/\#VerbosePkgLists/VerbosePkgLists/"g /etc/pacman.conf
 sed -i -e s"/\#ParallelDownloads.*/ParallelDownloads = 3/"g /etc/pacman.conf
 sed -i -e s"/\#CheckSpace/CheckSpace/"g /etc/pacman.conf
 sed -i -e s"/\#CacheDir.*/CacheDir = \/tmp\//"g /etc/pacman.conf
 sed -i -e s"/\#LogFile.*/LogFile = \/dev\/null/"g /etc/pacman.conf
+sed -i -e s"/\#CleanMethod.*/CleanMethod = KeepCurrent/"g /etc/pacman.conf
 sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo fontconfig/' /etc/pacman.conf
 sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/* usr\/share\/help\/* usr\/share\/info\/* usr\/share\/man\/*/"g /etc/pacman.conf
 sed -i -e s'/^CHOST.*/CHOST="x86_64-linux-musl"/'g /etc/makepkg.conf
