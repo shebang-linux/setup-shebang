@@ -36,6 +36,7 @@ Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
 sed -i -e '/^HoldPkg/a XferCommand = /sbin/curl -fSL --proto '\''=https'\'' --tlsv1.3 --progress-bar -o %o %u' /etc/pacman.conf
 sed -i -e '/#DisableSandbox/a DisableDownloadTimeout' /etc/pacman.conf
+sed -i -e 's/^SigLevel.*/Siglevel = Required DatabaseOptional TrustedOnly/g' /etc/pacman.conf
 sed -i -e s"/\#VerbosePkgLists/VerbosePkgLists/"g /etc/pacman.conf
 sed -i -e s"/\#ParallelDownloads.*/ParallelDownloads = 3/"g /etc/pacman.conf
 sed -i -e s"/\#CheckSpace/CheckSpace/"g /etc/pacman.conf
