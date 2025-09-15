@@ -34,7 +34,7 @@ pacman -U --noconfirm /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst
 echo -e '# Default mirrors
 Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
-sed -i -e '/^HoldPkg/a XferCommand = /sbin/curl -fSL --proto '\''=https'\'' --tlsv1.3 --progress-bar -o %o %u' /etc/pacman.conf
+sed -i -e '/^HoldPkg/a XferCommand = /sbin/curl -fSL --proto=https --tlsv1.3 --progress-bar -o %o %u' /etc/pacman.conf
 sed -i -e '/#DisableSandbox/a DisableDownloadTimeout' /etc/pacman.conf
 sed -i -e 's/^SigLevel.*/SigLevel = Required DatabaseOptional TrustedOnly/g' /etc/pacman.conf
 sed -i -e s"/\#VerbosePkgLists/VerbosePkgLists/"g /etc/pacman.conf
@@ -46,7 +46,7 @@ sed -i -e s"/\#CleanMethod.*/CleanMethod = KeepCurrent/"g /etc/pacman.conf
 sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo fontconfig/' /etc/pacman.conf
 sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/* usr\/share\/help\/* usr\/share\/info\/* usr\/share\/man\/*/"g /etc/pacman.conf
 sed -i -e s'/\/usr\/bin/\/sbin/'g /etc/makepkg.conf
-sed -i -e s'/curl -qgb.*/curl -fSL --proto "=https" --tlsv1.3 --progress-bar -o %o %u'\''/'g /etc/makepkg.conf
+sed -i -e s'/curl -qgb.*/curl -fSL --proto=https --tlsv1.3 --progress-bar -o %o %u'\''/'g /etc/makepkg.conf
 sed -i -e s'/^CHOST.*/CHOST="x86_64-linux-musl"/'g /etc/makepkg.conf
 sed -i -e '/^CFLAGS=/,/"/c\CFLAGS="-march=native -mtune=native -Os -flto -Wl,-flto -pipe \\\n\t-fomit-frame-pointer -momit-leaf-frame-pointer \\\n\t-fno-exceptions -fno-rtti \\\n\t-fno-plt -fno-semantic-interposition \\\n\t-ffunction-sections -fdata-sections"' /etc/makepkg.conf
 sed -i -e s'/^CXXFLAGS=.*/CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_PARALLEL"/'g /etc/makepkg.conf
