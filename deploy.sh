@@ -510,7 +510,8 @@ options iwlmvm power_scheme=3" >/etc/modprobe.d/wlan.conf
 
 echo -e "options rfkill default_state=0 master_switch_mode=0" >/etc/modprobe.d/wlanextra.conf
 
-sed -i -e 's|ext4.*|ext4 rw,lazytime,commit=3600,delalloc,nobarrier,nofail,discard 0 0|g' /etc/fstab
+sed -i -e 's|ext4.*|ext4 rw,noatime,nodiratime,lazytime,commit=3600,delalloc,nobarrier,nofail,discard,async 0 0|g' /etc/fstab
+sed -i -e 's|relatime|noatime,nodiratime,lazytime|g' /etc/fstab
 
 echo -e "* soft nofile 524288
 * hard nofile 524288
