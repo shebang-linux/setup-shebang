@@ -201,7 +201,7 @@ wget -qO /sbin/prelockd https://raw.githubusercontent.com/hakavlad/prelockd/refs
 chmod +x /sbin/prelockd
 wget -qO /etc/hosts https://github.com/StevenBlack/hosts/raw/refs/heads/master/alternates/fakenews-gambling-porn-social/hosts && sed -i -e 's/#.*0.0.0.0/0.0.0.0/g' /etc/hosts
 
-echo -e "permit nopass persist :$USERNAME" >/etc/doas.conf
+echo -e "permit nopass :$USERNAME" >/etc/doas.conf
 
 sed -i -e "s/replaceme/$KEYMAP/" /home/$USERNAME/.config/openbox/autostart
 sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
