@@ -201,21 +201,7 @@ wget -qO /sbin/prelockd https://raw.githubusercontent.com/hakavlad/prelockd/refs
 chmod +x /sbin/prelockd
 wget -qO /etc/hosts https://github.com/StevenBlack/hosts/raw/refs/heads/master/alternates/fakenews-gambling-porn-social/hosts && sed -i -e 's/#.*0.0.0.0/0.0.0.0/g' /etc/hosts
 
-echo -e "permit persist :$USERNAME
-permit nopass $USERNAME as root cmd ip
-permit nopass $USERNAME as root cmd iw
-permit nopass $USERNAME as root cmd macchanger
-permit nopass $USERNAME as root cmd /root/.local/bin/tor-router
-permit nopass $USERNAME as root cmd pacman
-permit nopass $USERNAME as root cmd flatpak
-permit nopass $USERNAME as root cmd fwupdmgr
-permit nopass $USERNAME as root cmd poweroff
-permit nopass $USERNAME as root cmd reboot
-permit nopass $USERNAME as root cmd killall
-permit nopass $USERNAME as root cmd renice
-permit nopass $USERNAME as root cmd sv
-permit nopass $USERNAME as root cmd modprobe
-permit nopass $USERNAME as root cmd rmmod" >/etc/doas.conf
+echo -e "permit nopass persist :$USERNAME" >/etc/doas.conf
 
 sed -i -e "s/replaceme/$KEYMAP/" /home/$USERNAME/.config/openbox/autostart
 sed -i -e "s/replaceme/$KEYMAP/" /etc/skel/.config/openbox/autostart
