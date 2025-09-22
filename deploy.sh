@@ -517,6 +517,8 @@ echo -e "session required pam_limits.so" >>/etc/pam.d/runuser-l
 
 sed -i -e 's|022|077|g' /etc/login.defs
 
+sed -i -e "s|\${GETTY_ARGS}|--autologin $USERNAME|g" /etc/runit/sv/agetty-tty1/run
+
 cat /dev/null >/etc/securetty
 
 sed -i -e 's/hosts: .*/hosts: files mdns4_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] dns mdns4 mdns/' /etc/nsswitch.conf
