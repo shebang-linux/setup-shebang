@@ -225,7 +225,6 @@ Section "Device"
 EndSection
 
 Section "Extensions"
-    Option "XVideo" "off"
     Option "Damage" "off"
     Option "DAMAGE" "off"
 EndSection' >/etc/X11/xorg.conf.d/10-xorg.conf
