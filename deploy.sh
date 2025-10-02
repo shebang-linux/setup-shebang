@@ -5,10 +5,10 @@ ln -sf /usr/share/zoneinfo/"$REGION_CITY" /etc/localtime
 hwclock --systohc
 
 # Localization
-echo -e "LC_ALL=C
+echo -e "CHARSET=UTF-8
+LANG=en_GB.UTF-8
 LC_COLLATE=C
-LANG=en_GB.UTF8
-LANGUAGE=en_GB.UTF8
+LC_ALL=\${LC_ALL:-C}
 XKB_DEFAULT_LAYOUT=$KEYMAP" >/etc/environment
 echo "en_GB.UTF-8 UTF-8" >/etc/locale.gen
 locale-gen
