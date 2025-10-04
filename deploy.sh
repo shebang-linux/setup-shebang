@@ -317,8 +317,6 @@ blacklist cramfs
 blacklist freevxfs
 blacklist jffs2
 blacklist hfs
-blacklist hfsplus
-blacklist squashfs
 blacklist wl
 blacklist ssb
 blacklist b43
