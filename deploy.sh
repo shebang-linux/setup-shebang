@@ -8,7 +8,6 @@ hwclock --systohc
 echo -e "CHARSET=UTF-8
 LANG=en_GB.UTF-8
 LC_COLLATE=C
-LC_ALL=\${LC_ALL:-C}
 XKB_DEFAULT_LAYOUT=$KEYMAP" >/etc/environment
 echo "en_GB.UTF-8 UTF-8" >/etc/locale.gen
 locale-gen
