@@ -218,6 +218,7 @@ EndSection
 
 Section "Device"
     Identifier "Device0"
+    Option "PageFlip" "false"
     Option "TearFree" "true"
     Option "DynamicPMMSupport" "true"
     Option "PowerSave" "true"
