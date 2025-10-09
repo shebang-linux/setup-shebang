@@ -447,6 +447,7 @@ net.ipv4.conf.all.accept_source_route=0
 net.ipv4.conf.all.arp_evict_nocarrier=1
 net.ipv4.conf.all.arp_ignore=1
 net.ipv4.conf.all.log_martians=0
+net.ipv4.tcp_notsent_lowat=131072
 net.ipv4.udp_rmem_min=8192
 net.ipv4.udp_wmem_min=8192
 net.ipv4.udp_early_demux=1
