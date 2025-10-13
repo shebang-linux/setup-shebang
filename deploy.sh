@@ -220,6 +220,10 @@ EndSection
 
 Section "Device"
     Identifier "Device0"
+    Option "CacheLines" "0"
+    Option "XvMCSurfaces" "0"
+    Option "SWcursor" "true"
+    Option "NoDDC" "true"
     Option "PageFlip" "false"
     Option "TearFree" "true"
     Option "DynamicPMMSupport" "true"
@@ -228,6 +232,10 @@ EndSection
 
 Section "Device"
     Identifier "Device1"
+    Option "CacheLines" "0"
+    Option "XvMCSurfaces" "0"
+    Option "SWcursor" "true"
+    Option "NoDDC" "true"
     Option "PageFlip" "false"
     Option "TearFree" "true"
     Option "DynamicPMMSupport" "true"
