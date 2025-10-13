@@ -197,9 +197,6 @@ rm -rfd .config*
 wget -qO /etc/preload.conf https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/preload/preload.conf
 wget -qO /sbin/preload https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/preload/preload
 chmod +x /sbin/preload
-wget -qO /etc/prelockd.conf https://raw.githubusercontent.com/shebang-linux/setup-shebang/main/prelockd/prelockd.conf
-wget -qO /sbin/prelockd https://raw.githubusercontent.com/hakavlad/prelockd/refs/heads/master/prelockd
-chmod +x /sbin/prelockd
 wget -qO /etc/hosts https://github.com/StevenBlack/hosts/raw/refs/heads/master/alternates/fakenews-gambling-porn-social/hosts && sed -i -e 's/#.*0.0.0.0/0.0.0.0/g' /etc/hosts
 
 echo -e "permit nopass :$USERNAME" >/etc/doas.conf
@@ -601,10 +598,10 @@ mkinitcpio -P
 
 # Install boot loader
 if [ "$ENCRYPTED" = "y" ]; then
-  sed -i -e "s|GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=$PART2:root:allow-discards root=/dev/mapper/root quiet rootfstype=ext4 biosdevname=0 nowatchdog noautogroup noresume default_hugepagesz=2M hugepagesz=2M hugepages=256 zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=10 zswap.zpool=zsmalloc workqueue.power_efficient=1 pcie_aspm=force pci=noaer rd.plymouth=0 plymouth.enable=0 plymouth.ignore-serial-consoles logo.nologo consoleblank=0 vt.global_cursor_default=0 rd.systemd.show_status=auto loglevel=0 rd.udev.log_level=0 udev.log_priority=0 enable_hangcheck=0 error_capture=0 msr.allow_writes=on audit=0 nosoftlockup selinux=0 enforcing=0 debugfs=off mce=0 mds=full,nosmt vsyscall=none no_timer_check skew_tick=1 clocksource=tsc tsc=perfect nohz=on rcutree.enable_rcu_lazy=1 rcupdate.rcu_expedited=1 rcu_nocb_poll noirqdebug iomem=relaxed iommu.passthrough=1 sched_policy=1 noreplace-smp nodiratime boot_delay=0 io_delay=none rootdelay=0 elevator=noop realloc init_on_alloc=0 init_on_free=0 pti=on no_stf_barrier mitigations=off ftrace_enabled=0 fsck.repair=no fsck.mode=skip cryptomgr.notests\"|g" /etc/default/grub
+  sed -i -e "s|GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT=\"cryptdevice=$PART2:root:allow-discards root=/dev/mapper/root quiet loglevel=0 net.ifnames=0 preempt=full nohz_full=all\"|g" /etc/default/grub
   sed -i -e '/GRUB_ENABLE_CRYPTODISK=y/s/^#//g' /etc/default/grub
 else
-  sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet rootfstype=ext4 biosdevname=0 nowatchdog noautogroup noresume default_hugepagesz=2M hugepagesz=2M hugepages=256 zswap.enabled=1 zswap.compressor=lz4 zswap.max_pool_percent=10 zswap.zpool=zsmalloc workqueue.power_efficient=1 pcie_aspm=force pci=noaer rd.plymouth=0 plymouth.enable=0 plymouth.ignore-serial-consoles logo.nologo consoleblank=0 vt.global_cursor_default=0 rd.systemd.show_status=auto loglevel=0 rd.udev.log_level=0 udev.log_priority=0 enable_hangcheck=0 error_capture=0 msr.allow_writes=on audit=0 nosoftlockup selinux=0 enforcing=0 debugfs=off mce=0 mds=full,nosmt vsyscall=none no_timer_check skew_tick=1 clocksource=tsc tsc=perfect nohz=on rcutree.enable_rcu_lazy=1 rcupdate.rcu_expedited=1 rcu_nocb_poll noirqdebug iomem=relaxed iommu.passthrough=1 sched_policy=1 noreplace-smp nodiratime boot_delay=0 io_delay=none rootdelay=0 elevator=noop realloc init_on_alloc=0 init_on_free=0 pti=on no_stf_barrier mitigations=off ftrace_enabled=0 fsck.repair=no fsck.mode=skip cryptomgr.notests"/' /etc/default/grub
+  sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 net.ifnames=0 preempt=full nohz_full=all"/' /etc/default/grub
 fi
 
 sed -i -e 's/GRUB_DEFAULT=.*/GRUB_DEFAULT=0/' /etc/default/grub
