@@ -226,10 +226,18 @@ Section "Device"
     Option "PowerSave" "true"
 EndSection
 
+Section "Device"
+    Identifier "Device1"
+    Option "PageFlip" "false"
+    Option "TearFree" "true"
+    Option "DynamicPMMSupport" "true"
+    Option "PowerSave" "true"
+EndSection
+
 Section "Extensions"
     Option "Damage" "off"
     Option "DAMAGE" "off"
-EndSection' >/etc/X11/xorg.conf.d/10-xorg.conf
+EndSection' >/etc/X11/xorg.conf.d/11-xorg.conf
 
 echo -e "CPU_LIMIT=0
 GPU_USE_SYNC_OBJECTS=1
