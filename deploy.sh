@@ -91,9 +91,9 @@ Include = /etc/pacman.d/mirrorlist-arch
 
 pacman -Sy && pacman-key --init && pacman-key --populate archlinux
 if lspci | grep -qiE nvidia; then
-    pacman -S --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas egl-gbm egl-x11 fwupd gtk-engines gtk-engine-murrine haveged-$INIT iw jitterentropy libva-mesa-driver macchanger mesa mesa-vdpau msr-tools nvidia-open-dkms openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim vulkan-mesa-layers wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xlibre xorg-xinit xterm
+    pacman -S --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas egl-gbm egl-x11 fwupd gtk-engines gtk-engine-murrine haveged-$INIT iw jitterentropy macchanger mesa msr-tools nvidia-open-dkms openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xlibre xorg-xinit xterm
 else
-    pacman -S --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas fwupd gtk-engines gtk-engine-murrine haveged-$INIT iw jitterentropy macchanger msr-tools openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xlibre xorg-xinit xterm
+    pacman -S --needed --noconfirm --disable-download-timeout alsa-utils backlight-$INIT bluez-$INIT dbus-broker doas fwupd gtk-engines gtk-engine-murrine haveged-$INIT iw jitterentropy macchanger mesa msr-tools openbox pipewire pipewire-alsa pipewire-pulse rsync scx-scheds tmux tor-$INIT torsocks unzip usbutils vim wget wireplumber wpa_supplicant xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xlibre xorg-xinit xterm
 fi
 
 mkdir -p /etc/pacman.d/hooks
