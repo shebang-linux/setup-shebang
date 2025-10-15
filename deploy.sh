@@ -27,11 +27,6 @@ yes "$ROOT_PASSWORD" | passwd $USERNAME
 yes "$ROOT_PASSWORD" | passwd
 
 # Pacman
-curl -so /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst https://archive.artixlinux.org/packages/f/fontconfig/fontconfig-2%3A2.16.2-1-x86_64.pkg.tar.zst
-pacman -U --noconfirm /tmp/fontconfig-2:2.16.2-1-x86_64.pkg.tar.zst
-curl -so /tmp/pango-1:1.56.4-2-x86_64.pkg.tar.zst https://archive.artixlinux.org/packages/p/pango/pango-1%3A1.56.4-2-x86_64.pkg.tar.zst
-pacman -U --noconfirm /tmp/pango-1:1.56.4-2-x86_64.pkg.tar.zst
-
 echo -e '# Default mirrors
 Server = https://mirrors.rit.edu/artixlinux/$repo/os/$arch
 Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch' >/etc/pacman.d/mirrorlist
@@ -44,7 +39,7 @@ sed -i -e s"/\#CheckSpace/CheckSpace/"g /etc/pacman.conf
 sed -i -e s"/\#CacheDir.*/CacheDir = \/tmp\//"g /etc/pacman.conf
 sed -i -e s"/\#LogFile.*/LogFile = \/dev\/null/"g /etc/pacman.conf
 sed -i -e s"/\#CleanMethod.*/CleanMethod = KeepCurrent/"g /etc/pacman.conf
-sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo fontconfig pango/' /etc/pacman.conf
+sed -i -e 's/#IgnorePkg.*/IgnorePkg = sudo/' /etc/pacman.conf
 sed -i -e s"/\#NoExtract.*/NoExtract = usr\/share\/doc\/* usr\/share\/gtk-doc\/* usr\/share\/help\/* usr\/share\/info\/* usr\/share\/man\/*/"g /etc/pacman.conf
 sed -i -e s'/\/usr\/bin/\/sbin/'g /etc/makepkg.conf
 sed -i -e s'/curl -qgb.*/curl -fSL --proto=https --tlsv1.3 --progress-bar -o %o %u'\''/'g /etc/makepkg.conf
