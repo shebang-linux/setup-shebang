@@ -106,7 +106,7 @@ Exec = /sbin/sh -c '[ \$DISPLAY ] && XAUTHORITY=/home/$USERNAME/.Xauthority setx
 
 echo -e "SocksPort 127.0.0.1:9050 IsolateClientAddr IsolateSOCKSAuth IsolateClientProtocol IsolateDestPort IsolateDestAddr
 Sandbox 1
-HardwareAccel 1
+HardwareAccel 0
 UseEntryGuards 1
 EnforceDistinctSubnets 1
 StrictNodes 0" >>/etc/tor/torrc
