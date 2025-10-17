@@ -210,6 +210,7 @@ sed -i -e 's/#HandleLidSwitchDocked=.*/HandleLidSwitchDocked=ignore/' /etc/elogi
 sed -i -e 's/#HandlePowerKeyLongPress=.*/HandlePowerKeyLongPress=reboot/' /etc/elogind/logind.conf
 
 echo -e 'Section "ServerFlags"
+    Option "Xinerama" "false"
     Option "GlxVisuals" "minimal"
     Option "Log" "flush"
 EndSection
